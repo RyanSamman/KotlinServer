@@ -1,0 +1,121 @@
+GET http://localhost:8080
+
+<> 2024-09-11T121843.200.txt
+<> 2024-09-11T121808.200.txt
+<> 2024-09-11T120652.200.txt
+<> 2024-09-11T120054.200.txt
+
+###
+
+
+GET http://localhost:8080/static/index.html
+
+<> 2024-09-11T121154.200.html
+
+
+###
+
+
+GET http://localhost:8080/articles?sort=abc123
+
+<> 2024-09-11T121315.200.txt
+<> 2024-09-11T121230.200.txt
+
+
+###
+
+
+GET http://localhost:8080/webjars
+
+<> 2024-09-11T121038.200.html
+
+###
+
+
+### Routing Example
+# Assuming Routing.kt has some predefined routes, e.g., /hello
+GET http://localhost:8080/error
+
+<> 2024-09-11T120122.500.txt
+<> 2024-09-11T120118.500.txt
+
+
+###
+
+### Static File Request
+# This request will fetch a static file
+GET http://localhost:8080/static/index.html
+
+<> 2024-09-11T120128.200.html
+
+### Environment: dev
+
+### Basic Authentication Request
+# This request will call the basic auth protected route
+GET http://localhost:8080/protected/route/basic
+Authorization: Basic {{encodedUserPassword}}
+
+<> 2024-09-11T141850.200.txt
+<> 2024-09-11T141745.500.txt
+
+###
+
+### Form Authentication Request
+### POST request for form-based authentication
+GET http://localhost:8080/protected/route/form
+Content-Type: application/x-www-form-urlencoded
+
+user=abc123&password=abc123
+
+<> 2024-09-11T142445.500.txt
+
+### Database Example
+
+### Create City
+# This request will create a new city
+POST http://localhost:8080/cities HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Sample City",
+  "population": 100000
+}
+
+<> 2024-09-11T142432.201.json
+<> 2024-09-11T140025.201.json
+
+###
+
+### Read City
+# This request will fetch city details by ID
+GET http://localhost:8080/cities/1 HTTP/1.1
+
+<> 2024-09-11T140038.200.json
+<> 2024-09-11T140030.200.json
+
+###
+
+### Update City
+# This request will update city details by ID
+PUT http://localhost:8080/cities/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Updated City",
+  "population": 150000
+}
+
+###
+
+### Delete City
+# This request will delete a city by ID
+DELETE http://localhost:8080/cities/1 HTTP/1.1
+
+###### Serialization Example
+# Assuming Serialization.kt has a route for JSON serialization test
+GET http://localhost:8080/json/kotlinx-serialization
+Accept: application/json
+
+<> 2024-09-11T122026.200.json
+<> 2024-09-11T120148.200.json
+
